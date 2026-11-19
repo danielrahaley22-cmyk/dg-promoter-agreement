@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DG Promoter Agreement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: single narrow column, numbered agreement steps, sticky progress bar, sign-off at the end. DG brand world: black stage, hot red. Single dark look by choice. */
+:root {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #0b0b0c;
+  --panel: #151517;
+  --panel-2: #1d1d20;
+  --line: #2c2c31;
+  --fg: #f3f2f0;
+  --muted: #a3a2a8;
+  --red: #ff2e3a;
+  --red-soft: rgba(255,46,58,.14);
+  --ok: #3ddc84;
+  --display: "Archivo", "Arial Black", Impact, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+body { -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; }
+h1, h2 { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: .01em; line-height: 1.02; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 8vw, 46px); }
+h2 { font-size: clamp(20px, 5vw, 26px); }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+.lead { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+.rule { width: 64px; height: 6px; background: var(--red); transform: skewX(-24deg); margin-top: 14px; }
+
+.progress { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; margin-top: 20px; border-bottom: 1px solid var(--line); }
+.progress-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.progress-row b { color: var(--fg); }
+.bar { height: 6px; background: var(--panel-2); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--red); transition: width .25s ease; }
+
+section { margin-top: 40px; display: grid; gap: 14px; }
+.sec-head { display: flex; align-items: baseline; gap: 12px; }
+.num { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 34px; color: transparent; -webkit-text-stroke: 1.5px var(--red); line-height: 1; }
+
+.check { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; cursor: pointer; transition: border-color .15s, background .15s; }
+.check:hover { border-color: #45454c; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.box { width: 24px; height: 24px; border: 2px solid #55555c; border-radius: 4px; display: grid; place-items: center; margin-top: 1px; }
+.box svg { width: 14px; height: 14px; opacity: 0; }
+.check input:checked ~ .box { background: var(--red); border-color: var(--red); }
+.check input:checked ~ .box svg { opacity: 1; }
+.check:has(input:checked) { border-color: var(--red); background: var(--red-soft); }
+.check input:focus-visible ~ .box { outline: 2px solid var(--fg); outline-offset: 2px; }
+.check strong { display: block; font-weight: 700; }
+.check .t { min-width: 0; }
+.check .t span { color: var(--muted); }
+
+.note { background: var(--panel-2); border-left: 4px solid var(--red); padding: 14px 16px; border-radius: 0 6px 6px 0; font-weight: 600; }
+
+.dd { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .dd { grid-template-columns: 1fr; } }
+.dd > div { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; min-width: 0; }
+.dd h3 { margin: 0 0 8px; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 18px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.tag { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 3px; font-size: 14px; font-family: var(--body); font-weight: 700; }
+.tag.do { background: var(--fg); color: var(--bg); }
+.tag.dont { background: var(--red); color: #fff; }
+.dd ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel-2); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 700; width: 42%; }
+td .sub { display: block; font-weight: 400; margin-top: 2px; }
+
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label.lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], select { width: 100%; font: inherit; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px; }
+input:focus, select:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: var(--red); }
+.hint { font-size: 12px; color: var(--muted); }
+.sig { font-family: "Brush Script MT", "Segoe Script", cursive; font-size: 22px !important; }
+
+.submit { margin-top: 8px; display: grid; gap: 10px; }
+button { font: inherit; cursor: pointer; }
+.btn { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: 17px; letter-spacing: .03em; background: var(--red); color: #fff; border: 0; border-radius: 6px; padding: 16px; }
+.btn:disabled { background: var(--panel-2); color: #6d6d74; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.missing { font-size: 13px; color: var(--muted); }
+
+.done { margin-top: 40px; background: var(--panel); border: 2px solid var(--red); border-radius: 8px; padding: 22px; display: grid; gap: 14px; }
+.done pre { white-space: pre-wrap; word-break: break-word; font: 13px/1.6 ui-monospace, Menlo, Consolas, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 14px; margin: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn-sec { background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; font-weight: 600; }
+.btn-sec:hover { border-color: var(--fg); }
+.foot { margin-top: 48px; color: var(--muted); font-size: 12px; text-align: center; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Dangerous Goods · XXL · January 2027</div>
+    <h1 style="margin-top:8px">Promoter Agreement</h1>
+    <div class="rule"></div>
+    <p class="lead">Read each section and tick the boxes to confirm you agree. Then add your details and tick to agree at the bottom. It takes about 3 minutes.</p>
+  </header>
+
+  <div class="progress" aria-live="polite">
+    <div class="progress-row"><span>Your progress</span><span><b id="pCount">0</b> of <b id="pTotal">0</b> done</span></div>
+    <div class="bar"><span id="pBar"></span></div>
+  </div>
+
+  <form id="form" novalidate>
+    <section>
+      <div class="sec-head"><span class="num">01</span><h2>Requirements</h2></div>
+      <p class="lead" style="margin:0">From the day you get your code until the event, you agree to the requirements below. <strong style="color:var(--fg)">Please tick the box next to each one to show you understand.</strong></p>
+      <div id="reqs" style="display:grid;gap:10px"></div>
+      <div class="note">We'd love every promoter to hit at least 5 sales by the event, and 5 sales also earns you a free ticket! If you're finding it hard, reach out to your team lead and we'll help you get there.</div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="num">02</span><h2>Dos and don'ts</h2></div>
+      <div class="dd">
+        <div>
+          <h3><span class="tag do">✓</span>Do</h3>
+          <ul>
+            <li>Only share prices, discounts, lineups and other details that DG has confirmed or given you.</li>
+            <li>Ask your team lead if you're unsure whether something is OK to post.</li>
+            <li>Keep messages short, friendly and personal.</li>
+            <li>If a customer asks something you don't know, don't guess. Tell them you'll check, then ask your team lead.</li>
+            <li>Share ideas, content and wins with the team.</li>
+            <li>Represent DG positively and respectfully, online and at events.</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span class="tag dont">✕</span>Don't</h3>
+          <ul>
+            <li>Promise anything on DG's behalf that you can't guarantee.</li>
+            <li>Say you're DG staff or management.</li>
+            <li>Spam or harass people.</li>
+            <li>Use misleading tactics to get a sale.</li>
+            <li>Slander DG or make negative comments about DG, online or in person.</li>
+            <li>Use your promoter status to pressure or take advantage of anyone.</li>
+            <li>Share screenshots of the promoter chat or leak unannounced info like lineups or prices.</li>
+          </ul>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="c-dd" class="agree"><span class="box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none"/></svg></span><span class="t"><strong>I'll follow the dos and don'ts.</strong></span></label>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="num">03</span><h2>Rewards</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Reward</th><th>When and how you get it</th></tr></thead>
+          <tbody>
+            <tr><td>1 free ticket for every 5 sales</td><td>Sent out 1 week before the event.</td></tr>
+            <tr><td>$5 commission per sale <span class="sub">($7.50 per sale once you hit 20+ sales)</span></td><td>The week after the event you'll receive your final sales update. Send your invoice and you'll be paid.</td></tr>
+            <tr><td>Cash bonus incentives</td><td>Paid monthly. Send an invoice to be paid.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hint" style="margin:0">Quick FYI: as a promoter you're working independently with the DG team, so you'll just need to look after your own tax on what you earn.</p>
+      <label class="check"><input type="checkbox" id="c-rw" class="agree"><span class="box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none"/></svg></span><span class="t"><strong>I understand how rewards are earned and paid.</strong></span></label>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="num">04</span><h2>Sign and agree</h2></div>
+      <div class="fields">
+        <div class="field"><label class="lbl" for="f-name">Full name</label><input type="text" id="f-name" class="req" autocomplete="name"></div>
+        <div class="field"><label class="lbl" for="f-ig">Instagram handle</label><input type="text" id="f-ig" class="req" placeholder="@yourhandle" autocomplete="off"></div>
+        <div class="field"><label class="lbl" for="f-state">City</label>
+          <select id="f-state" class="req">
+            <option value="">Choose your city</option>
+            <option>Melbourne</option><option>Sydney</option><option>Brisbane</option><option>Perth</option><option>Adelaide</option>
+          </select></div>
+        <div class="field"><label class="lbl" for="f-code">Promo code</label><input type="text" id="f-code" class="req" placeholder="e.g. SAMDG" autocomplete="off"><span class="hint" id="codeHint">Already promoting? Enter your current code. New? Enter the code you'd like.</span></div>
+      </div>
+      <label class="check"><input type="checkbox" id="c-final" class="agree"><span class="box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none"/></svg></span><span class="t"><strong>I've read and agree to the DG Promoter Agreement.</strong> <span>I'll meet the requirements and follow the rules above while promoting Dangerous Goods.</span></span></label>
+      <div class="submit">
+        <button type="submit" class="btn" id="submitBtn" disabled>Sign agreement</button>
+        <div class="missing" id="missing"></div>
+      </div>
+    </section>
+  </form>
+
+  <div class="done" id="done" hidden>
+    <div class="eyebrow">Signed</div>
+    <h2>You're in. Welcome to the team.</h2>
+    <p style="margin:0">Thanks for signing. Your agreement has been sent to the DG promoter team, so there's nothing else you need to do.</p>
+    <pre id="summary"></pre>
+  </div>
+
+  <div class="done" id="failed" hidden>
+    <div class="eyebrow">Not sent</div>
+    <h2>That didn't go through</h2>
+    <p style="margin:0">Check your internet connection and try again. Your answers are still filled in.</p>
+    <div class="row">
+      <button type="button" class="btn" id="retryBtn">Try again</button>
+      <button type="button" class="btn-sec" id="backBtn">Back to the form</button>
+    </div>
+  </div>
+
+  <p class="foot">Dangerous Goods · Promoter Agreement · XXL January 2027</p>
+</div>
+
+<script>
+(function () {
+  // Paste the Google Apps Script web app URL here (ends in /exec)
+  var SCRIPT_URL = "PASTE_WEB_APP_URL_HERE";
+  var VERSION = "Jan 2027 v1";
+  var REQS = [
+    ["Share the weekly post every Thursday.", "Post it with your code and tag your team lead so it can be tracked."],
+    ["Keep up with the promoter chat.", "Read and react to the messages sent, especially on Mondays and Thursdays."],
+    ["Make a minimum of 5 sales.", "This is how you earn your free ticket!"],
+    ["Follow DG and your team lead on Instagram.", "This is how we'll contact you."],
+    ["Follow the brand rules.", "No paid ads, don't edit the DG logo, and don't make anything that looks like an official DG account."]
+  ];
+  var tick = '<svg viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none"/></svg>';
+  var reqs = document.getElementById("reqs");
+  REQS.forEach(function (r, i) {
+    var l = document.createElement("label");
+    l.className = "check";
+    l.innerHTML = '<input type="checkbox" class="agree" id="c-r' + (i + 1) + '"><span class="box">' + tick + '</span><span class="t"><strong></strong> <span></span></span>';
+    l.querySelector("strong").textContent = r[0];
+    l.querySelector(".t > span").textContent = r[1];
+    reqs.appendChild(l);
+  });
+
+  var form = document.getElementById("form");
+  var agrees = Array.prototype.slice.call(document.querySelectorAll(".agree"));
+  var reqFields = Array.prototype.slice.call(document.querySelectorAll(".req"));
+  var total = agrees.length + reqFields.length;
+  document.getElementById("pTotal").textContent = total;
+
+  var d = new Date();
+  var dateStr = d.toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
+
+  function cleanCode(v) {
+    v = (v || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+    if (!v) return "";
+    v = v.replace(/(DG)+$/, "");
+    return v + "DG";
+  }
+  var codeInput = document.getElementById("f-code");
+  codeInput.addEventListener("blur", function () {
+    var c = cleanCode(codeInput.value);
+    codeInput.value = c;
+    document.getElementById("codeHint").textContent = c ? "Your code: " + c : "Already promoting? Enter your current code. New? Enter the code you'd like.";
+    update();
+  });
+
+  function filled(el) {
+    var v = el.value.trim();
+    if (el.type === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    return v.length > 0;
+  }
+  function update() {
+    var doneTicks = agrees.filter(function (c) { return c.checked; }).length;
+    var doneFields = reqFields.filter(filled).length;
+    var n = doneTicks + doneFields;
+    document.getElementById("pCount").textContent = n;
+    document.getElementById("pBar").style.width = (n / total * 100) + "%";
+    var btn = document.getElementById("submitBtn");
+    btn.disabled = n !== total;
+    var miss = [];
+    var t = agrees.length - doneTicks;
+    var f = reqFields.length - doneFields;
+    if (t) miss.push(t + " box" + (t > 1 ? "es" : "") + " to tick");
+    if (f) miss.push(f + " detail" + (f > 1 ? "s" : "") + " to fill in");
+    document.getElementById("missing").textContent = miss.length ? "Still to do: " + miss.join(" and ") + "." : "All done. Hit sign to finish.";
+  }
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+  update();
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+  var sending = false;
+  function payload() {
+    var ig = val("f-ig"); if (ig && ig.charAt(0) !== "@") ig = "@" + ig;
+    return {
+      name: val("f-name"),
+      instagram: ig,
+      city: val("f-state"),
+      code: cleanCode(val("f-code")),
+      agreed: "Yes",
+      version: VERSION
+    };
+  }
+  function show(id) {
+    form.hidden = id !== "form";
+    document.querySelector(".progress").hidden = id !== "form";
+    document.getElementById("done").hidden = id !== "done";
+    document.getElementById("failed").hidden = id !== "failed";
+    if (id !== "form") document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function send() {
+    if (sending) return;
+    sending = true;
+    var btn = document.getElementById("submitBtn");
+    var retry = document.getElementById("retryBtn");
+    btn.disabled = true; btn.textContent = "Sending...";
+    retry.disabled = true; retry.textContent = "Sending...";
+    var p = payload();
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(p)
+    }).then(function () {
+      document.getElementById("summary").textContent = [
+        "Name: " + p.name,
+        "Instagram: " + p.instagram,
+        "City: " + p.city,
+        "Promo code: " + p.code,
+        "Agreed on: " + dateStr
+      ].join("\n");
+      show("done");
+    }).catch(function () {
+      show("failed");
+    }).then(function () {
+      sending = false;
+      btn.textContent = "Sign agreement";
+      retry.disabled = false; retry.textContent = "Try again";
+      update();
+    });
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (document.getElementById("submitBtn").disabled) return;
+    send();
+  });
+  document.getElementById("retryBtn").addEventListener("click", send);
+  document.getElementById("backBtn").addEventListener("click", function () { show("form"); });
+})();
+</script>
+
+</body>
+</html>
